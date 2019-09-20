@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_141017) do
+ActiveRecord::Schema.define(version: 2019_09_20_065027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,10 @@ ActiveRecord::Schema.define(version: 2019_09_18_141017) do
     t.text "clinic_review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "report_id", null: false
+    t.bigint "clinic_id", null: false
+    t.index ["clinic_id"], name: "index_clinic_reports_on_clinic_id"
+    t.index ["report_id"], name: "index_clinic_reports_on_report_id"
   end
 
   create_table "clinics", force: :cascade do |t|
@@ -50,7 +54,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_141017) do
     t.string "clinic_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "prefecture_id"
+    t.bigint "prefecture_id", null: false
+    t.index ["prefecture_id"], name: "index_clinics_on_prefecture_id"
   end
 
   create_table "prefectures", force: :cascade do |t|
@@ -59,6 +64,14 @@ ActiveRecord::Schema.define(version: 2019_09_18_141017) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "region_id"
     t.string "region_name"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer "how_manieth_fertility_treatments"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,4 +98,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_141017) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clinic_reports", "clinics"
+  add_foreign_key "clinic_reports", "reports"
+  add_foreign_key "clinics", "prefectures"
+  add_foreign_key "reports", "users"
 end

@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  how_manieth_fertility_treatments: 1
+
+two:
+  how_manieth_fertility_treatments: 1

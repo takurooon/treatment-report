@@ -12,7 +12,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">レポートアプリ</a>
+      <%= link_to "治療レポート", root_path, class:"navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,10 +24,10 @@
             
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% if user_signed_in? %>
-                <%= link_to "レポート投稿", reports_path %>
+                <%= link_to "レポート投稿", new_report_path %><br>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               <% else %>
-                <%= link_to "ユーザー登録", new_user_registration_path %>
+                <%= link_to "ユーザー登録", new_user_registration_path %><br>
                 <%= link_to "ログイン", new_user_session_path %>
               <% end %>
 
@@ -38,6 +38,7 @@
                 <p class="alert alert-error"><%= alert %></p>
               <% end %>
             </div>
+            
           </li>
         </ul>
       </div>
