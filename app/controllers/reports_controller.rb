@@ -2,6 +2,7 @@ class ReportsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   def index
+    @reports = Report.all
   end
 
   def new

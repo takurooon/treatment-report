@@ -7,34 +7,26 @@
 <table class="table table-bordered border-primary table-hover table-sm reports_table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col" style="width: 40px">No.</th>
-      <th scope="col" style="width: 700px">投稿タイトル</th>
-      <th scope="col">投稿者</th>
-      <th scope="col">投稿日</th>
-      <th scope="col">更新日時</th>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>作成者</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Test1</td>
-      <td>hoge</td>
-      <td>2018/4/1</td>
-      <td>2018/4/1</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Test1</td>
-      <td>hoge</td>
-      <td>2018/4/1</td>
-      <td>2018/4/1</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Test1</td>
-      <td>hoge</td>
-      <td>2018/4/1</td>
-      <td>2018/4/1</td>
-    </tr>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.id %></td>
+        <td><%= report.title %></td>
+        <td><%= report.name %></td>
+        <td><%= report.created_at.to_s(:datetime_jp) %></td>
+        <td><%= report.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to '詳細', report, class: 'btn btn-outline-dark' %></td>
+        <td><%= link_to '削除', report, class: 'btn btn-outline-dark', method: :delete %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
