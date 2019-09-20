@@ -27,6 +27,7 @@ group :development do
 
   # 追加
   gem 'letter_opener_web'
+  gem 'pry-byebug'
 end
 
 group :test do
