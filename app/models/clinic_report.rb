@@ -1,4 +1,6 @@
 class ClinicReport < ApplicationRecord
+  belongs_to :report
+  belongs_to :clinic
 end
 
 # == Schema Information

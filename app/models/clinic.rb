@@ -1,4 +1,6 @@
 class Clinic < ApplicationRecord
+  has_many :clinic_reports
+  belongs_to :prefecture
 end
 
 # == Schema Information

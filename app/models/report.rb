@@ -1,4 +1,6 @@
 class Report < ApplicationRecord
+  belongs_to :user
+  has_many :clinic_reports, :delete_all
 end
 
 # == Schema Information
