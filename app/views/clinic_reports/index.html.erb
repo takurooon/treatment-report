@@ -1,19 +1,19 @@
 <div class="d-flex align-items-center">
-  <h1>クリニックレポート一覧</h1>
-  <div class="ml-auto reports_button">
+  <h2>クリニックレポート一覧</h2>
+  <div class="ml-auto cl_reports_button">
     <%= link_to "投稿", new_clinic_report_path, class:"btn btn-outline-info button" %>
   </div>
 </div>
-<table class="table table-bordered border-primary table-hover table-sm reports_table">
+<table class="table table-bordered border-primary table-hover table-sm cl_reports_table">
   <thead class="thead-dark">
     <tr>
-      <th>ID</th>
-      <th>タイトル</th>
-      <th>作成者</th>
-      <th>作成日時</th>
-      <th>更新日時</th>
-      <th></th>
-      <th></th>
+      <th>都道府県</th>
+      <th>クリニック</th>
+      <th>年齢</th>
+      <th>AMH値</th>
+      <th>採卵回数</th>
+      <th>移植回数</th>
+      <th>作成日</th>
     </tr>
   </thead>
   <tbody>

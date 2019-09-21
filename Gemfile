@@ -28,6 +28,7 @@ group :development do
   # 追加
   gem 'letter_opener_web'
   gem 'pry-byebug'
+  gem 'annotate'
 end
 
 group :test do
