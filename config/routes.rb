@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  resources :reports
-  resources :clinic_reports
+  resources :reports do
+    resources :clinic_reports
+  end
 
   get 'reports/index'
   if Rails.env.development?
