@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     resources :clinic_reports
   end
 
+  resources :users do
+    resources :reports
+  end
+
+  resources :clinic_reports, only: [:index]
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
@@ -51,6 +57,7 @@ end
 #                                       PATCH  /reports/:id(.:format)                                                                   reports#update
 #                                       PUT    /reports/:id(.:format)                                                                   reports#update
 #                                       DELETE /reports/:id(.:format)                                                                   reports#destroy
+#                        clinic_reports GET    /clinic_reports(.:format)                                                                clinic_reports#index
 #                     letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create

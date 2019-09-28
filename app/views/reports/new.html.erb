@@ -6,24 +6,10 @@
 </div>
 <%= form_with(model: @report, local: true) do |f| %>
   <div class="form-group">
-    <%= f.label :name, '投稿者名' %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :how_manieth_fertility_treatments, '投稿者名' %>
+    <%= f.text_field :how_manieth_fertility_treatments, class: 'form-control' %>
     <small id="poster-tip" class="form-text text-muted">
         あなたの名前を入力してください。
-    </small>
-  </div>
-  <div class="form-group">
-    <%= f.label :title, '投稿タイトル' %>
-    <%= f.text_field :title, class: 'form-control' %>
-    <small id="title-tip" class="form-text text-muted">
-        タイトルを入力してください。
-    </small>
-  </div>
-  <div class="form-group">
-    <%= f.label :content, '投稿内容' %>
-    <%= f.text_area :content, class: 'form-control', rows:10 %>
-    <small id=content-tip" class="form-text text-muted">
-        投稿内容を入力してください。 
     </small>
   </div>
   <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
