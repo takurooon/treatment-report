@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'clinic_reports#index'
+  root 'reports#index'
   
   devise_for :users
 
@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     resources :clinic_reports
   end
 
-  get 'reports/index'
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
@@ -17,7 +16,7 @@ end
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
-#                                  root GET    /                                                                                        clinic_reports#index
+#                                  root GET    /                                                                                        reports#index
 #                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
 #                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
 #                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -36,6 +35,14 @@ end
 #                 new_user_confirmation GET    /users/confirmation/new(.:format)                                                        devise/confirmations#new
 #                     user_confirmation GET    /users/confirmation(.:format)                                                            devise/confirmations#show
 #                                       POST   /users/confirmation(.:format)                                                            devise/confirmations#create
+#                 report_clinic_reports GET    /reports/:report_id/clinic_reports(.:format)                                             clinic_reports#index
+#                                       POST   /reports/:report_id/clinic_reports(.:format)                                             clinic_reports#create
+#              new_report_clinic_report GET    /reports/:report_id/clinic_reports/new(.:format)                                         clinic_reports#new
+#             edit_report_clinic_report GET    /reports/:report_id/clinic_reports/:id/edit(.:format)                                    clinic_reports#edit
+#                  report_clinic_report GET    /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#show
+#                                       PATCH  /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#update
+#                                       PUT    /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#update
+#                                       DELETE /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#destroy
 #                               reports GET    /reports(.:format)                                                                       reports#index
 #                                       POST   /reports(.:format)                                                                       reports#create
 #                            new_report GET    /reports/new(.:format)                                                                   reports#new
@@ -44,15 +51,6 @@ end
 #                                       PATCH  /reports/:id(.:format)                                                                   reports#update
 #                                       PUT    /reports/:id(.:format)                                                                   reports#update
 #                                       DELETE /reports/:id(.:format)                                                                   reports#destroy
-#                        clinic_reports GET    /clinic_reports(.:format)                                                                clinic_reports#index
-#                                       POST   /clinic_reports(.:format)                                                                clinic_reports#create
-#                     new_clinic_report GET    /clinic_reports/new(.:format)                                                            clinic_reports#new
-#                    edit_clinic_report GET    /clinic_reports/:id/edit(.:format)                                                       clinic_reports#edit
-#                         clinic_report GET    /clinic_reports/:id(.:format)                                                            clinic_reports#show
-#                                       PATCH  /clinic_reports/:id(.:format)                                                            clinic_reports#update
-#                                       PUT    /clinic_reports/:id(.:format)                                                            clinic_reports#update
-#                                       DELETE /clinic_reports/:id(.:format)                                                            clinic_reports#destroy
-#                         reports_index GET    /reports/index(.:format)                                                                 reports#index
 #                     letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create

@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center">
   <h1>投稿</h1>
   <div class="ml-auto posts_button">
-      <%= link_to "レポート一覧", clinic_reports_path, class:"btn btn-outline-info" %>
+      <%= link_to "レポート一覧", report_clinic_reports_path, class:"btn btn-outline-info" %>
   </div>
 </div>
 <%= form_with(model: @clinic_report, local: true) do |f| %>
