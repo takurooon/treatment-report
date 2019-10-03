@@ -1,19 +1,21 @@
 <div class="d-flex align-items-center">
-  <h1>投稿</h1>
+  <h1>レポート作成</h1>
   <div class="ml-auto posts_button">
-      <%= link_to "レポート一覧", reports_path, class:"btn btn-outline-info" %>
+      <%= link_to "レポート一覧", clinic_reports_path, class:"btn btn-outline-info" %>
   </div>
 </div>
 <%= form_with(model: @report, local: true) do |f| %>
   <div class="form-group">
-    <%= f.label :how_manieth_fertility_treatments, '投稿者名' %>
-    <%= f.text_field :how_manieth_fertility_treatments, class: 'form-control' %>
+    <%= f.label :how_manieth_fertility_treatments, '何人目の治療レポートを作成しますか？' %>
+    <%= f.select :how_manieth_fertility_treatments, { "1人目" => 1, "2人目" => 2, "3人目" => 3, "4人目" => 4, "5人目" => 5 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
-        あなたの名前を入力してください。
+        何人目かを選択してください。
     </small>
   </div>
-  <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
-  <small id="submit-tip" class="form-text text-muted">
-      投稿する前に投稿内容を見直してください!
-  </small>
+  <div class="submit-btn">
+    <%= f.submit '作成', class: 'btn btn-info btn-block' %>
+    <small id="submit-tip" class="form-text text-muted">
+        間違いがなければ作成してください。
+    </small>
+  </div>
 <% end %>

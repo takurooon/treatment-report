@@ -1,27 +1,29 @@
 <div class="d-flex align-items-center">
-  <h1>投稿一覧</h1>
+  <h1>レポート一覧</h1>
   <div class="ml-auto reports_button">
-    <%= link_to "投稿", new_report_path, class:"btn btn-outline-info button" %>
+    <%= link_to "クリニックレポートを作成", new_report_path, class:"btn btn-outline-info button" %>
   </div>
 </div>
 <table class="table table-bordered border-primary table-hover table-sm reports_table">
   <thead class="thead-dark">
     <tr>
-      <th>ID</th>
-      <th>タイトル</th>
-      <th>作成者</th>
+      <th>何人目</th>
+      <th>クリニック</th>
+      <th>年齢</th>
+      <th>費用</th>
       <th>作成日時</th>
       <th>更新日時</th>
-      <th></th>
-      <th></th>
+      <th>詳細</th>
+      <th>削除</th>
     </tr>
   </thead>
   <tbody>
     <% @reports.each do |report| %>
       <tr>
-        <td><%= report.id %></td>
-        <td><%= report.title %></td>
-        <td><%= report.name %></td>
+        <td><%= report.how_manieth_fertility_treatments %>人目</td>
+        <td><%= report.how_manieth_fertility_treatments %>人目</td>
+        <td><%= report.how_manieth_fertility_treatments %>人目</td>
+        <td><%= report.how_manieth_fertility_treatments %>人目</td>
         <td><%= report.created_at.to_s(:datetime_jp) %></td>
         <td><%= report.updated_at.to_s(:datetime_jp) %></td>
         <td><%= link_to '詳細', report, class: 'btn btn-outline-dark' %></td>

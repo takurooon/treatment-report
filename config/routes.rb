@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'reports#index'
+  root 'clinic_reports#index'
   
   devise_for :users
 

@@ -35,6 +35,7 @@ class ReportsController < ApplicationController
   end
 
   private
+  
   def report_params
     params.require(:report).permit(:how_manieth_fertility_treatments)
   end

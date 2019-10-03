@@ -1,29 +1,50 @@
 <div class="d-flex align-items-center">
-  <h1>投稿</h1>
+  <h1>クリニックレポートを作成</h1>
   <div class="ml-auto posts_button">
       <%= link_to "レポート一覧", report_clinic_reports_path, class:"btn btn-outline-info" %>
   </div>
 </div>
 <%= form_with(model: @clinic_report, local: true) do |f| %>
   <div class="form-group">
-    <%= f.label :name, '投稿者名' %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :number_of_clinics, '何院目ですか？' %>
+    <%= f.select :number_of_clinics, { "1院目" => 1, "2院目" => 2, "3院目" => 3, "4院目" => 4, "5院目" => 5, "6院目" => 6, "7院目" => 7, "8院目" => 8, "9院目" => 9, "10院目" => 10, "それ以上" => 11 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
-        あなたの名前を入力してください。
+        治療を開始してから何院目の医療機関か選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :title, '投稿タイトル' %>
-    <%= f.text_field :title, class: 'form-control' %>
-    <small id="title-tip" class="form-text text-muted">
-        タイトルを入力してください。
+    <%= f.label :current_state, '妊娠中ですか？すでに出産されていますか？' %>
+    <%= f.select :current_state, { "妊娠中" => 1, "出産後" => 2 }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        妊娠中または出産しているか選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :content, '投稿内容' %>
-    <%= f.text_area :content, class: 'form-control', rows:10 %>
-    <small id=content-tip" class="form-text text-muted">
-        投稿内容を入力してください。 
+    <%= f.label :work_style, '通院中の働き方にもっとも当てはまるのはどれですか？' %>
+    <%= f.select :work_style, { "正社員" => 1, "契約社員" => 2, "パート" => 3, "仕事はしていなかった" => 4, "正社員→退職" => 5, "正社員→長期休暇" => 6, "契約社員→退職" => 7, "パート→退職" => 8, "リモートワーク等へ切り替え" => 9, "その他" => 10 }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        一番当てはまるものを選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :address_at_that_time, '通院中の住まい' %>
+    <%= f.select :address_at_that_time, {  }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        一番当てはまるものを選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :number_of_aih, '人工授精の回数' %>
+    <%= f.select :number_of_aih, { "1回" => 1, "2回" => 2, "3回" => 3, "4回" => 4, "5回" => 5, "6回" => 6, "7回" => 7, "8回" => 8, "9回" => 9, "10回" => 10, "10回以上" => 11 }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        当てはまるものを選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :amh, '治療中のAMH値' %>
+    <%= f.select :amh, { "0.1以下" => 1, "0.3以下" => 2, "0.5以下" => 3, "0.7以下" => 4, "1.0以下" => 5, "1.5以下" => 6, "2.0以下" => 7, "2.5以下" => 8, "3.0以下" => 9, "3.5以下" => 10, "4.0以下" => 11, "4.5以下"  => 12, "5.0以下" => 13, "5.5以下" => 14, "6.0以下" => 15, "6.5以下" => 16, "7.0以下" => 17, "7.5以下" => 18, "8.0以下" => 19, "8.5以下" => 20, "9.0以下" => 21, "9.5以下" => 22, "10.0以下" => 23, "10.1以上" => 24 }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        一番直近の値を入力してください。
     </small>
   </div>
   <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
