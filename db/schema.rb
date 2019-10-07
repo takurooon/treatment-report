@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_065027) do
+ActiveRecord::Schema.define(version: 2019_10_07_233831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.integer "city_code"
+    t.bigint "prefecture_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
+  end
 
   create_table "clinic_reports", force: :cascade do |t|
     t.integer "current_state"
@@ -45,6 +54,9 @@ ActiveRecord::Schema.define(version: 2019_09_20_065027) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "report_id", null: false
     t.bigint "clinic_id", null: false
+    t.integer "EggMaturityLeadingToPregnancy"
+    t.integer "EmbryoCultureDayLeadingToPregnancy"
+    t.integer "EmbryoGradeLeadingToPregnancy"
     t.index ["clinic_id"], name: "index_clinic_reports_on_clinic_id"
     t.index ["report_id"], name: "index_clinic_reports_on_report_id"
   end
@@ -55,6 +67,8 @@ ActiveRecord::Schema.define(version: 2019_09_20_065027) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "prefecture_id", null: false
+    t.integer "jsog_code"
+    t.integer "postal_code"
     t.index ["prefecture_id"], name: "index_clinics_on_prefecture_id"
   end
 
@@ -98,8 +112,19 @@ ActiveRecord::Schema.define(version: 2019_09_20_065027) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wards", force: :cascade do |t|
+    t.string "name"
+    t.integer "ward_code"
+    t.bigint "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_wards_on_city_id"
+  end
+
+  add_foreign_key "cities", "prefectures"
   add_foreign_key "clinic_reports", "clinics"
   add_foreign_key "clinic_reports", "reports"
   add_foreign_key "clinics", "prefectures"
   add_foreign_key "reports", "users"
+  add_foreign_key "wards", "cities"
 end

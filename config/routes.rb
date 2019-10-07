@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :reports do
-    resources :clinic_reports
+    resources :clinic_reports, shallow: true
   end
 
   resources :users do
@@ -22,7 +22,7 @@ end
 # == Route Map
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
-#                                  root GET    /                                                                                        reports#index
+#                                  root GET    /                                                                                        clinic_reports#index
 #                      new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
 #                          user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
 #                  destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -44,11 +44,11 @@ end
 #                 report_clinic_reports GET    /reports/:report_id/clinic_reports(.:format)                                             clinic_reports#index
 #                                       POST   /reports/:report_id/clinic_reports(.:format)                                             clinic_reports#create
 #              new_report_clinic_report GET    /reports/:report_id/clinic_reports/new(.:format)                                         clinic_reports#new
-#             edit_report_clinic_report GET    /reports/:report_id/clinic_reports/:id/edit(.:format)                                    clinic_reports#edit
-#                  report_clinic_report GET    /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#show
-#                                       PATCH  /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#update
-#                                       PUT    /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#update
-#                                       DELETE /reports/:report_id/clinic_reports/:id(.:format)                                         clinic_reports#destroy
+#                    edit_clinic_report GET    /clinic_reports/:id/edit(.:format)                                                       clinic_reports#edit
+#                         clinic_report GET    /clinic_reports/:id(.:format)                                                            clinic_reports#show
+#                                       PATCH  /clinic_reports/:id(.:format)                                                            clinic_reports#update
+#                                       PUT    /clinic_reports/:id(.:format)                                                            clinic_reports#update
+#                                       DELETE /clinic_reports/:id(.:format)                                                            clinic_reports#destroy
 #                               reports GET    /reports(.:format)                                                                       reports#index
 #                                       POST   /reports(.:format)                                                                       reports#create
 #                            new_report GET    /reports/new(.:format)                                                                   reports#new
@@ -57,6 +57,22 @@ end
 #                                       PATCH  /reports/:id(.:format)                                                                   reports#update
 #                                       PUT    /reports/:id(.:format)                                                                   reports#update
 #                                       DELETE /reports/:id(.:format)                                                                   reports#destroy
+#                          user_reports GET    /users/:user_id/reports(.:format)                                                        reports#index
+#                                       POST   /users/:user_id/reports(.:format)                                                        reports#create
+#                       new_user_report GET    /users/:user_id/reports/new(.:format)                                                    reports#new
+#                      edit_user_report GET    /users/:user_id/reports/:id/edit(.:format)                                               reports#edit
+#                           user_report GET    /users/:user_id/reports/:id(.:format)                                                    reports#show
+#                                       PATCH  /users/:user_id/reports/:id(.:format)                                                    reports#update
+#                                       PUT    /users/:user_id/reports/:id(.:format)                                                    reports#update
+#                                       DELETE /users/:user_id/reports/:id(.:format)                                                    reports#destroy
+#                                 users GET    /users(.:format)                                                                         users#index
+#                                       POST   /users(.:format)                                                                         users#create
+#                              new_user GET    /users/new(.:format)                                                                     users#new
+#                             edit_user GET    /users/:id/edit(.:format)                                                                users#edit
+#                                  user GET    /users/:id(.:format)                                                                     users#show
+#                                       PATCH  /users/:id(.:format)                                                                     users#update
+#                                       PUT    /users/:id(.:format)                                                                     users#update
+#                                       DELETE /users/:id(.:format)                                                                     users#destroy
 #                        clinic_reports GET    /clinic_reports(.:format)                                                                clinic_reports#index
 #                     letter_opener_web        /letter_opener                                                                           LetterOpenerWeb::Engine
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create

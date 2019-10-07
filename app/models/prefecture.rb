@@ -1,5 +1,7 @@
 class Prefecture < ApplicationRecord
   has_many :clinics
+  has_many :cities
+  has_many :wards
 end
 
 # == Schema Information

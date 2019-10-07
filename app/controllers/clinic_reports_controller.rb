@@ -6,14 +6,16 @@ class ClinicReportsController < ApplicationController
   end
 
   def new
+    @report = Report.find(params[:report_id])
     @clinic_report = ClinicReport.new
   end
 
   def create
     clinic_report = ClinicReport.new(clinic_report_params)
-    if report.save
+    clinic_report.report_id = params[:report_id].to_i
+    if clinic_report.save
       flash[:notice] = "レポートを作成しました"
-      redirect_to report_clinic_report_path
+      redirect_to clinic_report_path(clinic_report)
     else
       flash[:clinic_report] = clinic_report
       flash[:error_messages] = clinic_report.errors.full_messages

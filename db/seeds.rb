@@ -15,3 +15,19 @@ CSV.foreach('db/seeds/prefecture.csv', headers: true) do |row|
     region_name: row['region_name']
   )
 end
+
+CSV.foreach('db/seeds/city.csv', headers: true) do |row|
+  City.create!(
+    name: row['name'],
+    city_code: row['city_code'],
+    prefecture_id: row['prefecture_id']
+  )
+end
+
+CSV.foreach('db/seeds/ward.csv', headers: true) do |row|
+  Ward.create!(
+    name: row['name'],
+    ward_code: row['ward_code'],
+    city_id: row['city_id']
+  )
+end
