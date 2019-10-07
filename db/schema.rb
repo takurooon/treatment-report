@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_234230) do
+ActiveRecord::Schema.define(version: 2019_10_07_234824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2019_10_07_234230) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
+  end
+
+  create_table "clinic_report_supplements", force: :cascade do |t|
+    t.bigint "clinic_report_id", null: false
+    t.bigint "supplement_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_report_id"], name: "index_clinic_report_supplements_on_clinic_report_id"
+    t.index ["supplement_id"], name: "index_clinic_report_supplements_on_supplement_id"
   end
 
   create_table "clinic_reports", force: :cascade do |t|
@@ -128,6 +137,8 @@ ActiveRecord::Schema.define(version: 2019_10_07_234230) do
   end
 
   add_foreign_key "cities", "prefectures"
+  add_foreign_key "clinic_report_supplements", "clinic_reports"
+  add_foreign_key "clinic_report_supplements", "supplements"
   add_foreign_key "clinic_reports", "clinics"
   add_foreign_key "clinic_reports", "reports"
   add_foreign_key "clinics", "prefectures"
