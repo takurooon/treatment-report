@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_080204) do
+ActiveRecord::Schema.define(version: 2019_10_08_105024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(version: 2019_10_08_080204) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "female_funins", force: :cascade do |t|
+    t.bigint "clinic_report_id", null: false
+    t.bigint "female_infertility_factor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_report_id"], name: "index_female_funins_on_clinic_report_id"
+    t.index ["female_infertility_factor_id"], name: "index_female_funins_on_female_infertility_factor_id"
   end
 
   create_table "female_infertility_factors", force: :cascade do |t|
@@ -202,6 +211,8 @@ ActiveRecord::Schema.define(version: 2019_10_08_080204) do
   add_foreign_key "clinic_reports", "clinics"
   add_foreign_key "clinic_reports", "reports"
   add_foreign_key "clinics", "prefectures"
+  add_foreign_key "female_funins", "clinic_reports"
+  add_foreign_key "female_funins", "female_infertility_factors"
   add_foreign_key "reports", "users"
   add_foreign_key "wards", "cities"
 end
