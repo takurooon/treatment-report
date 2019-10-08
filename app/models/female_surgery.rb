@@ -1,0 +1,2 @@
+class FemaleSurgery < ApplicationRecord
+end

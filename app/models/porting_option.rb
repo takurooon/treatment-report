@@ -1,0 +1,2 @@
+class PortingOption < ApplicationRecord
+end

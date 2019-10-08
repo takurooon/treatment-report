@@ -1,0 +1,2 @@
+class FemaleDisease < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class MaleInfertilityFactor < ApplicationRecord
+end

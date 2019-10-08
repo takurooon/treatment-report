@@ -1,0 +1,2 @@
+class OvulationInhibitor < ApplicationRecord
+end

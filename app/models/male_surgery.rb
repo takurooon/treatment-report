@@ -1,0 +1,2 @@
+class MaleSurgery < ApplicationRecord
+end

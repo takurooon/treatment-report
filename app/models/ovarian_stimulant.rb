@@ -1,0 +1,2 @@
+class OvarianStimulant < ApplicationRecord
+end
