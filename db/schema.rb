@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_110127) do
+ActiveRecord::Schema.define(version: 2019_10_08_110356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,15 @@ ActiveRecord::Schema.define(version: 2019_10_08_110127) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["clinic_report_id"], name: "index_female_syujutsus_on_clinic_report_id"
     t.index ["female_surgery_id"], name: "index_female_syujutsus_on_female_surgery_id"
+  end
+
+  create_table "isyoku_options", force: :cascade do |t|
+    t.bigint "clinic_report_id", null: false
+    t.bigint "porting_option_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_report_id"], name: "index_isyoku_options_on_clinic_report_id"
+    t.index ["porting_option_id"], name: "index_isyoku_options_on_porting_option_id"
   end
 
   create_table "male_diseases", force: :cascade do |t|
@@ -262,6 +271,8 @@ ActiveRecord::Schema.define(version: 2019_10_08_110127) do
   add_foreign_key "female_shikkans", "female_diseases"
   add_foreign_key "female_syujutsus", "clinic_reports"
   add_foreign_key "female_syujutsus", "female_surgeries"
+  add_foreign_key "isyoku_options", "clinic_reports"
+  add_foreign_key "isyoku_options", "porting_options"
   add_foreign_key "male_funins", "clinic_reports"
   add_foreign_key "male_funins", "male_infertility_factors"
   add_foreign_key "male_shikkans", "clinic_reports"
