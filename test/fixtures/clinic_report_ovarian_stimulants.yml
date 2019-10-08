@@ -1,9 +1,0 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  clinic_report: one
-  ovarian_stimulant: one
-
-two:
-  clinic_report: two
-  ovarian_stimulant: two
