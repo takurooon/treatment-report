@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_110356) do
+ActiveRecord::Schema.define(version: 2019_10_08_110925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -212,6 +212,15 @@ ActiveRecord::Schema.define(version: 2019_10_08_110356) do
     t.string "region_name"
   end
 
+  create_table "ranso_shigekis", force: :cascade do |t|
+    t.bigint "clinic_report_id", null: false
+    t.bigint "ovarian_stimulant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clinic_report_id"], name: "index_ranso_shigekis_on_clinic_report_id"
+    t.index ["ovarian_stimulant_id"], name: "index_ranso_shigekis_on_ovarian_stimulant_id"
+  end
+
   create_table "reports", force: :cascade do |t|
     t.integer "how_manieth_fertility_treatments"
     t.bigint "user_id"
@@ -279,6 +288,8 @@ ActiveRecord::Schema.define(version: 2019_10_08_110356) do
   add_foreign_key "male_shikkans", "male_diseases"
   add_foreign_key "male_syujutsus", "clinic_reports"
   add_foreign_key "male_syujutsus", "male_surgeries"
+  add_foreign_key "ranso_shigekis", "clinic_reports"
+  add_foreign_key "ranso_shigekis", "ovarian_stimulants"
   add_foreign_key "reports", "users"
   add_foreign_key "wards", "cities"
 end
