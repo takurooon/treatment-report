@@ -1,6 +1,8 @@
 class ClinicReport < ApplicationRecord
   belongs_to :report
   belongs_to :clinic
+  has_many :clinic_report_suppliments, dependent: :destroy
+  has_many :supplements, through: :clinic_report_suppliments
 end
 
 # == Schema Information

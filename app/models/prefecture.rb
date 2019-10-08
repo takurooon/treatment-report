@@ -1,7 +1,6 @@
 class Prefecture < ApplicationRecord
   has_many :clinics
-  has_many :cities
-  has_many :wards
+  has_many :cities, dependent: :destroy
 end
 
 # == Schema Information

@@ -1,6 +1,6 @@
 class Report < ApplicationRecord
   belongs_to :user
-  has_many :clinic_reports, dependent: :delete_all
+  has_many :clinic_reports, dependent: :destroy
 end
 
 # == Schema Information

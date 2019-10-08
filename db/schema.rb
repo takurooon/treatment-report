@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_111713) do
+ActiveRecord::Schema.define(version: 2019_10_08_130813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 2019_10_08_111713) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "report_id", null: false
     t.bigint "clinic_id", null: false
-    t.integer "EggMaturityLeadingToPregnancy"
-    t.integer "EmbryoCultureDayLeadingToPregnancy"
-    t.integer "EmbryoGradeLeadingToPregnancy"
+    t.integer "successful_egg_maturity"
+    t.integer "successful_embryo_culture_days"
+    t.integer "successful_embryo_grade"
     t.index ["clinic_id"], name: "index_clinic_reports_on_clinic_id"
     t.index ["report_id"], name: "index_clinic_reports_on_report_id"
   end
