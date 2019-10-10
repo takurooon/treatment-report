@@ -42,17 +42,80 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :amh, '治療中のAMH値' %>
+    <%= f.label :amh, '治療中のAMH値はいくつでしたか' %>
     <%= f.select :amh, { "0.1以下" => 1, "0.3以下" => 2, "0.5以下" => 3, "0.7以下" => 4, "1.0以下" => 5, "1.5以下" => 6, "2.0以下" => 7, "2.5以下" => 8, "3.0以下" => 9, "3.5以下" => 10, "4.0以下" => 11, "4.5以下"  => 12, "5.0以下" => 13, "5.5以下" => 14, "6.0以下" => 15, "6.5以下" => 16, "7.0以下" => 17, "7.5以下" => 18, "8.0以下" => 19, "8.5以下" => 20, "9.0以下" => 21, "9.5以下" => 22, "10.0以下" => 23, "10.1以上" => 99 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
-        一番直近の値を入力してください。
+        一番直近の値を選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :bmi, '治療中のBMI値' %>
+    <%= f.label :bmi, '治療中のBMI値はいくつでしたか' %>
     <%= f.select :bmi, { "18.5未満" => 1, "18.5〜25未満" => 2, "25〜30未満" => 3, "30〜35未満" => 4, "35〜40未満" => 5, "40以上" => 6 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
-        一番直近の値を入力してください。
+        一番直近の値を選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '治療中サプリを使用しましたか（複数選択可）' %>
+    <%= f.collection_check_boxes(:supplement_ids, Supplement.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        妊娠に至った周期に服用していたサプリがあれば全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '女性側に不妊原因がありましたか？（複数選択可）' %>
+    <%= f.collection_check_boxes(:female_infertility_factor_ids, FemaleInfertilityFactor.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        不妊原因があれば全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '男性側に不妊原因がありましたか？（複数選択可）' %>
+    <%= f.collection_check_boxes(:male_infertility_factor_ids, MaleInfertilityFactor.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        不妊原因があれば全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '女性側に疾患はありましたか？（複数選択可）' %>
+    <%= f.collection_check_boxes(:female_disease_ids, FemaleDisease.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        疾患があれば全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '男性側に疾患はありましたか？（複数選択可）' %>
+    <%= f.collection_check_boxes(:male_disease_ids, MaleDisease.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        疾患があれば全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '治療に関連して女性側が行った手術はありますか？（複数選択可）' %>
+    <%= f.collection_check_boxes(:female_surgery_ids, FemaleSurgery.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        行った手術を全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '治療に関連して男性側が行った手術はありますか？（複数選択可）' %>
+    <%= f.collection_check_boxes(:male_surgery_ids, MaleSurgery.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        行った手術を全て選択してください。
     </small>
   </div>
   <div class="form-group">
@@ -77,10 +140,46 @@
     </small>
   </div>
   <div class="form-group">
+    <%= f.label :name, '妊娠に至った周期での使用した卵巣刺激薬剤を教えてください（複数選択可）' %>
+    <%= f.collection_check_boxes(:ranso_shigeki_ids, RansoShigeki.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+      　使用した薬剤を全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '妊娠に至った周期に使用した排卵抑制剤を教えてください（複数選択可）' %>
+    <%= f.collection_check_boxes(:hairan_yokusei_ids, HairanYokusei.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+      　使用した薬剤を全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '妊娠に至った周期に使用した排卵誘発剤を教えてください（複数選択可）' %>
+    <%= f.collection_check_boxes(:hairan_yuhatsu_ids, HairanYuhatsu.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+      　使用した薬剤を全て選択してください。
+    </small>
+  </div>
+  <div class="form-group">
     <%= f.label :total_number_of_transplants, 'このクリニックでの全移植回数' %>
     <%= f.select :total_number_of_transplants, { "1回" => 1, "2回" => 2, "3回" => 3, "4回" => 4, "5回" => 5, "6回" => 6, "7回" => 7, "8回" => 8, "9回" => 9, "10回" => 10, "11回" => 11, "12回"  => 12, "13回" => 13, "14回" => 14, "15回" => 15, "16回" => 16, "17回" => 17, "18回" => 18, "19回" => 19, "20回" => 20, "それ以上" => 99 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
         当てはまるものを選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, '移植時のオプションについて教えてください（複数選択可）' %>
+    <%= f.collection_check_boxes(:isyoku_option_ids, IsyokuOption.all, :id, :name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+    <small id="poster-tip" class="form-text text-muted">
+        妊娠に至った移植で使用したオプションを全て選択してください。
     </small>
   </div>
   <div class="form-group">
