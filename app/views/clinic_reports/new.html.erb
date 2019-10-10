@@ -126,6 +126,13 @@
     </small>
   </div>
   <div class="form-group">
+    <%= f.label :type_of_sairan_cycle, '妊娠に至った周期の採卵誘発方法は' %>
+    <%= f.select :type_of_sairan_cycle, { "完全自然" => 1, "内服薬使用（クロミッド等）" => 2, "内服薬＋注射" => 3, "4個" => 4, "アンタゴニスト法" => 5, "ロング法" => 6, "ショート法" => 7 }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        当てはまるものを選択してください。
+    </small>
+  </div>
+  <div class="form-group">
     <%= f.label :total_number_of_sairan, 'このクリニックでの全採卵回数' %>
     <%= f.select :total_number_of_sairan, { "1回" => 1, "2回" => 2, "3回" => 3, "4回" => 4, "5回" => 5, "6回" => 6, "7回" => 7, "8回" => 8, "9回" => 9, "10回" => 10, "11回" => 11, "12回"  => 12, "13回" => 13, "14回" => 14, "15回" => 15, "16回" => 16, "17回" => 17, "18回" => 18, "19回" => 19, "20回" => 20, "それ以上" => 99 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
@@ -140,7 +147,7 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '妊娠に至った周期での使用した卵巣刺激薬剤を教えてください（複数選択可）' %>
+    <%= f.label :name, '周期で使用した卵巣刺激薬剤を教えてください（複数選択可）' %>
     <%= f.collection_check_boxes(:ranso_shigeki_ids, RansoShigeki.all, :id, :name) do |b| %>
       <%= b.label { b.check_box + b.text } %>
     <% end %>
@@ -190,14 +197,7 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :type_of_sairan_cycle, '最後の採卵誘発方法は' %>
-    <%= f.select :type_of_sairan_cycle, { "完全自然" => 1, "内服薬使用（クロミッド等）" => 2, "内服薬＋注射" => 3, "4個" => 4, "アンタゴニスト法" => 5, "ロング法" => 6, "ショート法" => 7 }, {}, { :class => "form-control" }  %>
-    <small id="poster-tip" class="form-text text-muted">
-        当てはまるものを選択してください。
-    </small>
-  </div>
-  <div class="form-group">
-    <%= f.label :types_of_fertilization_methods, '最新の周期での受精方法' %>
+    <%= f.label :types_of_fertilization_methods, '妊娠に至った卵子と精子の受精方法を教えてください' %>
     <%= f.select :types_of_fertilization_methods, { "体外受精（ふりかけ）" => 1, "顕微授精" => 2, "スプリット法" => 3 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
         当てはまるものを選択してください。

@@ -1,8 +1,39 @@
 class ClinicReport < ApplicationRecord
   belongs_to :report
   belongs_to :clinic
-  has_many :clinic_report_suppliments, dependent: :destroy
-  has_many :supplements, through: :clinic_report_suppliments
+
+  has_many :clinic_report_supplements, dependent: :destroy
+  has_many :supplements, through: :clinic_report_supplements
+
+  has_many :female_funins, dependent: :destroy
+  has_many :female_infertility_factors, through: :female_funins
+
+  has_many :male_funins, dependent: :destroy
+  has_many :male_infertility_factors, through: :male_funins
+
+  has_many :female_shikkans, dependent: :destroy
+  has_many :female_diseases, through: :female_shikkans
+
+  has_many :male_shikkans, dependent: :destroy
+  has_many :male_diseases, through: :male_shikkans
+
+  has_many :female_syujutsus, dependent: :destroy
+  has_many :female_surgeries, through: :female_syujutsus
+
+  has_many :male_syujutsus, dependent: :destroy
+  has_many :male_surgeries, through: :male_syujutsus
+
+  has_many :ranso_shigekis, dependent: :destroy
+  has_many :ovarian_stimulants, through: :ranso_shigekis
+
+  has_many :hairan_yokuseis, dependent: :destroy
+  has_many :ovulation_inhibitors, through: :hairan_yokuseis
+
+  has_many :hairan_yuhatsus, dependent: :destroy
+  has_many :ovulation_inducers, through: :hairan_yuhatsus
+
+  has_many :isyoku_options, dependent: :destroy
+  has_many :porting_options, through: :isyoku_options
 end
 
 # == Schema Information
