@@ -14,15 +14,25 @@ class ClinicReportsController < ApplicationController
     clinic_report = ClinicReport.new(clinic_report_params)
     clinic_report.report_id = params[:report_id].to_i
     clinic_report.clinic_id = 1
-    if clinic_report.save
-      flash[:notice] = "レポートを作成しました"
-      redirect_to clinic_report_path(clinic_report)
-    else
-      flash[:clinic_report] = clinic_report
-      flash[:error_messages] = clinic_report.errors.full_messages
-      logger.error clinic_report.errors.full_messages
-      redirect_back fallback_location: clinic_report
+
+    respond_to do |format|
+      if clinic_report.save
+        format.html { redirect_to clinic_report_path(clinic_report), notice: '投稿しました' }
+        format.json { render :show, status: :created, location: @clinic_report }
+      else
+        format.html { render :new }
+        format.json { render json: @clinic_report.errors, status: :unprocessable_entity }
+      end
     end
+    # if clinic_report.save
+    #   flash[:notice] = "レポートを作成しました"
+    #   redirect_to clinic_report_path(clinic_report)
+    # else
+    #   flash[:clinic_report] = clinic_report
+    #   flash[:error_messages] = clinic_report.errors.full_messages
+    #   logger.error clinic_report.errors.full_messages
+    #   redirect_back fallback_location: clinic_report
+    # end
   end
 
   def show
