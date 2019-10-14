@@ -20,8 +20,8 @@
     <% @clinic_reports.each do |cl_repo| %>
       <tr>
         <td><%= cl_repo.id %></td>
-        <td><%= cl_repo.title %></td>
-        <td><%= cl_repo.name %></td>
+        <td><%= cl_repo.id %></td>
+        <td><%= cl_repo.id %></td>
         <td><%= cl_repo.created_at.to_s(:datetime_jp) %></td>
         <td><%= cl_repo.updated_at.to_s(:datetime_jp) %></td>
         <td><%= link_to '詳細', cl_repo, class: 'btn btn-outline-dark' %></td>

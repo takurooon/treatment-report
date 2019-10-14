@@ -68,9 +68,10 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '女性側に不妊原因がありましたか？（複数選択可）' %>
+    <%= f.label :name, '女性側に不妊原因がありましたか？（複数選択可）' %><br>
     <%= f.collection_check_boxes(:female_infertility_factor_ids, FemaleInfertilityFactor.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <%= b.check_box class:"form-check-input" %>
+      <%= b.label(clss: "form-check-label") { b.text } %>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         不妊原因があれば全て選択してください。
