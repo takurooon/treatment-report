@@ -7,7 +7,8 @@
 <table class="table table-bordered border-primary table-hover table-sm cl_reports_table">
   <thead class="thead-dark">
     <tr>
-      <th>都道府県</th>
+      <th>何人目不妊</th>
+      <th>住まい</th>
       <th>クリニック</th>
       <th>年齢</th>
       <th>AMH値</th>
@@ -19,13 +20,14 @@
   <tbody>
     <% @clinic_reports.each do |cl_repo| %>
       <tr>
-        <td><%= cl_repo.id %></td>
-        <td><%= cl_repo.id %></td>
-        <td><%= cl_repo.id %></td>
-        <td><%= cl_repo.created_at.to_s(:datetime_jp) %></td>
-        <td><%= cl_repo.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= cl_repo.report.how_manieth_fertility_treatments %>目不妊</td>
+        <td><%= cl_repo.clinic.prefecture.name %></td>
+        <td><%= cl_repo.clinic.clinic_name %></td>
+        <td><%= cl_repo.treatment_end_age %>歳</td>
+        <td><%= cl_repo.amh %></td>
+        <td><%= cl_repo.total_number_of_sairan %></td>
         <td><%= link_to '詳細', cl_repo, class: 'btn btn-outline-dark' %></td>
-        <td><%= link_to '削除', cl_repo, class: 'btn btn-outline-dark', method: :delete %></td>
+        <td><%= link_to '削除', cl_repo, class: 'btn btn-outline-dark', method: :destroy %></td>
       </tr>
     <% end %>
   </tbody>
