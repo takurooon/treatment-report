@@ -27,7 +27,7 @@
         <td><%= cl_repo.amh %></td>
         <td><%= cl_repo.total_number_of_sairan %></td>
         <td><%= link_to '詳細', cl_repo, class: 'btn btn-outline-dark' %></td>
-        <td><%= link_to '削除', cl_repo, class: 'btn btn-outline-dark', method: :destroy %></td>
+        <td><%= link_to '削除', cl_repo, class: 'btn btn-outline-dark', method: :delete, data: { confirm: '削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>

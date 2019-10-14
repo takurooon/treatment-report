@@ -36,6 +36,13 @@ class ClinicReportsController < ApplicationController
   end
 
   def show
+    @clinic_report = ClinicReport.find(params[:id])
+  end
+
+  def destroy
+    clinic_report = ClinicReport.find(params[:id])
+    clinic_report.destroy
+    redirect_to clinic_reports_path
   end
 
   private
