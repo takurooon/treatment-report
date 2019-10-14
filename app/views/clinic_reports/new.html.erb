@@ -70,53 +70,70 @@
   <div class="form-group">
     <%= f.label :name, '女性側に不妊原因がありましたか？（複数選択可）' %><br>
     <%= f.collection_check_boxes(:female_infertility_factor_ids, FemaleInfertilityFactor.all, :id, :name) do |b| %>
-      <%= b.check_box class:"form-check-input" %>
-      <%= b.label(clss: "form-check-label") { b.text } %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         不妊原因があれば全て選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '男性側に不妊原因がありましたか？（複数選択可）' %>
+    <%= f.label :name, '男性側に不妊原因がありましたか？（複数選択可）' %><br>
     <%= f.collection_check_boxes(:male_infertility_factor_ids, MaleInfertilityFactor.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         不妊原因があれば全て選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '女性側に疾患はありましたか？（複数選択可）' %>
+    <%= f.label :name, '女性側に疾患はありましたか？（複数選択可）' %><br>
     <%= f.collection_check_boxes(:female_disease_ids, FemaleDisease.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         疾患があれば全て選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '男性側に疾患はありましたか？（複数選択可）' %>
+    <%= f.label :name, '男性側に疾患はありましたか？（複数選択可）' %><br>
     <%= f.collection_check_boxes(:male_disease_ids, MaleDisease.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         疾患があれば全て選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '治療に関連して女性側が行った手術はありますか？（複数選択可）' %>
+    <%= f.label :name, '治療に関連して女性側が行った手術はありますか？（複数選択可）' %><br>
     <%= f.collection_check_boxes(:female_surgery_ids, FemaleSurgery.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         行った手術を全て選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '治療に関連して男性側が行った手術はありますか？（複数選択可）' %>
+    <%= f.label :name, '治療に関連して男性側が行った手術はありますか？（複数選択可）' %><br>
     <%= f.collection_check_boxes(:male_surgery_ids, MaleSurgery.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         行った手術を全て選択してください。
@@ -151,27 +168,36 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '周期で使用した卵巣刺激薬剤を教えてください（複数選択可）' %>
-    <%= f.collection_check_boxes(:ranso_shigeki_ids, RansoShigeki.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+    <%= f.label :name, '周期で使用した卵巣刺激薬剤を教えてください（複数選択可）' %><br>
+    <%= f.collection_check_boxes(:ovarian_stimulant_ids, OvarianStimulant.all, :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
       　使用した薬剤を全て選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '妊娠に至った周期に使用した排卵抑制剤を教えてください（複数選択可）' %>
-    <%= f.collection_check_boxes(:hairan_yokusei_ids, HairanYokusei.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+    <%= f.label :name, '妊娠に至った周期に使用した排卵抑制剤を教えてください（複数選択可）' %><br>
+    <%= f.collection_check_boxes(:ovulation_inhibitor_ids, OvulationInhibitor.all, :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
       　使用した薬剤を全て選択してください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '妊娠に至った周期に使用した排卵誘発剤を教えてください（複数選択可）' %>
-    <%= f.collection_check_boxes(:hairan_yuhatsu_ids, HairanYuhatsu.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+    <%= f.label :name, '妊娠に至った周期に使用した排卵誘発剤を教えてください（複数選択可）' %><br>
+    <%= f.collection_check_boxes(:ovulation_inducer_ids, OvulationInducer.all, :id, :name) do |b| %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
       　使用した薬剤を全て選択してください。
@@ -185,9 +211,12 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :name, '移植時のオプションについて教えてください（複数選択可）' %>
+    <%= f.label :name, '移植時のオプションについて教えてください（複数選択可）' %><br>
     <%= f.collection_check_boxes(:isyoku_option_ids, IsyokuOption.all, :id, :name) do |b| %>
-      <%= b.label { b.check_box + b.text } %>
+      <div class="form-check form-check-inline">
+        <%= b.check_box class:"form-check-input" %>
+        <%= b.label(class: "form-check-label") { b.text } %>
+      </div>
     <% end %>
     <small id="poster-tip" class="form-text text-muted">
         妊娠に至った移植で使用したオプションを全て選択してください。
