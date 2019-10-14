@@ -7,6 +7,13 @@
 <p>以下質問は--ここにクリニックname入れる---での治療結果を選択してください。</p>
 <%= form_with(model: [ @report, @clinic_report ], local: true) do |f| %>
   <div class="form-group">
+    <%= f.label :current_state, '現在妊娠中ですか？すでに出産されていますか？' %>
+    <%= f.select :current_state, { "妊娠中" => 1, "出産後" => 2 }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        妊娠中または出産しているか選択してください。
+    </small>
+  </div>
+  <div class="form-group">
     <%= f.label :number_of_clinics, 'このクリニックは何院目ですか？' %>
     <%= f.select :number_of_clinics, { "1院目" => 1, "2院目" => 2, "3院目" => 3, "4院目" => 4, "5院目" => 5, "6院目" => 6, "7院目" => 7, "8院目" => 8, "9院目" => 9, "10院目" => 10, "それ以上" => 99 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
@@ -14,10 +21,17 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :current_state, '妊娠中ですか？すでに出産されていますか？' %>
-    <%= f.select :current_state, { "妊娠中" => 1, "出産後" => 2 }, {}, { :class => "form-control" }  %>
+    <%= f.label :treatment_start_age, 'このクリニックで治療を開始したのは何歳の時ですか' %>
+    <%= f.select :treatment_start_age, { "20歳未満" => 19, "20歳" => 20, "21歳" => 21, "22歳" => 22, "23歳" => 23, "24歳" => 24, "25歳" => 25, "26歳" => 26, "27歳" => 27, "28歳" => 28, "29歳" => 29, "30歳" => 30, "31歳" => 31, "32歳" => 32, "33歳" => 33, "34歳" => 34, "35歳" => 35, "36歳" => 36, "37歳" => 37, "38歳" => 38, "39歳" => 39, "40歳" => 40, "41歳" => 41, "42歳" => 42, "43歳" => 43, "44歳" => 44, "45歳" => 45, "46歳" => 46, "47歳" => 47, "48歳" => 48, "49歳" => 49, "50歳" => 50, "51歳" => 51, "52歳" => 52, "53歳" => 53, "54歳" => 54, "55歳" => 55, "56歳" => 56, "57歳" => 57, "58歳" => 58, "59歳" => 29, "60歳以上" => 99 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
-        妊娠中または出産しているか選択してください。
+        通院を開始した年齢を選択してください。
+    </small>
+  </div>
+  <div class="form-group">
+    <%= f.label :treatment_end_age, 'このクリニックで治療を終了したのは何歳の時ですか' %>
+    <%= f.select :treatment_end_age, { "20歳未満" => 19, "20歳" => 20, "21歳" => 21, "22歳" => 22, "23歳" => 23, "24歳" => 24, "25歳" => 25, "26歳" => 26, "27歳" => 27, "28歳" => 28, "29歳" => 29, "30歳" => 30, "31歳" => 31, "32歳" => 32, "33歳" => 33, "34歳" => 34, "35歳" => 35, "36歳" => 36, "37歳" => 37, "38歳" => 38, "39歳" => 39, "40歳" => 40, "41歳" => 41, "42歳" => 42, "43歳" => 43, "44歳" => 44, "45歳" => 45, "46歳" => 46, "47歳" => 47, "48歳" => 48, "49歳" => 49, "50歳" => 50, "51歳" => 51, "52歳" => 52, "53歳" => 53, "54歳" => 54, "55歳" => 55, "56歳" => 56, "57歳" => 57, "58歳" => 58, "59歳" => 29, "60歳以上" => 99 }, {}, { :class => "form-control" }  %>
+    <small id="poster-tip" class="form-text text-muted">
+        妊娠、または治療を断念し、通院を終了した年齢を選択してください。
     </small>
   </div>
   <div class="form-group">
@@ -212,7 +226,7 @@
   </div>
   <div class="form-group">
     <%= f.label :name, '移植時のオプションについて教えてください（複数選択可）' %><br>
-    <%= f.collection_check_boxes(:isyoku_option_ids, IsyokuOption.all, :id, :name) do |b| %>
+    <%= f.collection_check_boxes(:porting_option_ids, PortingOption.all, :id, :name) do |b| %>
       <div class="form-check form-check-inline">
         <%= b.check_box class:"form-check-input" %>
         <%= b.label(class: "form-check-label") { b.text } %>
@@ -279,17 +293,17 @@
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :content, '治療の感想について自由にお書きください（尚、次項に「クリニックレビュー」記述欄が用意されています）' %>
+    <%= f.label :content, '治療の感想について自由にお書きください。多くの詳細情報を残すことで治療中の方の有益な参考情報になります（尚、次項に「クリニックレビュー」記述欄が用意されています）' %>
     <%= f.text_area :content, :class => "form-control", rows: 10 %>
     <small id="poster-tip" class="form-text text-muted">
         可能な限り多くの情報を書いてください。
     </small>
   </div>
   <div class="form-group">
-    <%= f.label :clinic_review, 'クリニックについて自由にお書きください。' %>
+    <%= f.label :clinic_review, 'クリニックについてレビュー含め自由にお書きください。' %>
     <%= f.text_area :clinic_review, :class => "form-control", rows: 10 %>
     <small id="poster-tip" class="form-text text-muted">
-        特定の人物への誹謗中傷等はおやめください。
+        誹謗中傷等はおやめください。投稿ポリシーに違反している場合削除致します。
     </small>
   </div>
 
