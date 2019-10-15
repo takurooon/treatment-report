@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  resources :reports do
-    resources :clinic_reports, shallow: true
+  resources :reports, shallow: true do
+    resources :clinic_reports
   end
 
   resources :users do

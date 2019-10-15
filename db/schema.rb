@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_130813) do
+ActiveRecord::Schema.define(version: 2019_10_15_100749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2019_10_08_130813) do
     t.integer "successful_egg_maturity"
     t.integer "successful_embryo_culture_days"
     t.integer "successful_embryo_grade"
+    t.integer "fertility_treatment_number"
+    t.integer "treatment_type"
     t.index ["clinic_id"], name: "index_clinic_reports_on_clinic_id"
     t.index ["report_id"], name: "index_clinic_reports_on_report_id"
   end
@@ -273,6 +275,8 @@ ActiveRecord::Schema.define(version: 2019_10_08_130813) do
     t.string "name"
     t.string "gender"
     t.string "icon"
+    t.string "link"
+    t.text "self_introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
