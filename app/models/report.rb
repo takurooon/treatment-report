@@ -1,6 +1,7 @@
 class Report < ApplicationRecord
   belongs_to :user
   has_many :clinic_reports, dependent: :destroy
+  accepts_nested_attributes_for :clinic_reports
 end
 
 # == Schema Information

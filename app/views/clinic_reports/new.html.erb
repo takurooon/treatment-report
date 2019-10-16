@@ -5,17 +5,13 @@
   </div>
 </div>
 <%= form_with(model: [ @report, @clinic_report ], local: true) do |f| %>
-
-  
-  # カラム未作成
   <div class="form-group">
     <%= f.label :fertility_treatment_number, '何人目の不妊治療ですか?（何人目不妊ですか）' %>
     <%= f.select :fertility_treatment_number, { "1人目" => 1, "2人目" => 2, "3人目" => 3, "4人目" => 4, "5人目" => 5, "6人目以上" => 99 }, {}, { :class => "form-control" }  %>
     <small id="poster-tip" class="form-text text-muted">
-        。
+        選択してください。
     </small>
   </div>
-
   <div class="form-group">
     <%= f.label :current_state, '現在妊娠中ですか？すでに出産されていますか？' %>
     <%= f.select :current_state, { "現在妊娠中" => 1, "出産した" => 2, "妊娠または出産に至らず転院(治療継続予定)" => 3, "不妊治療を辞めた(治療自体を継続しない)" => 4 }, {}, { :class => "form-control" }  %>
@@ -23,8 +19,6 @@
         妊娠中または出産しているか選択してください。
     </small>
   </div>
-
-  # カラム未作成
   <div class="form-group">
     <%= f.label :treatment_type, '治療の種類を選択してください' %>
     <%= f.select :treatment_type, { "顕微･体外受精" => 1, "人工授精" => 2, "タイミング指導法" => 3, "その他" => 99 }, {}, { :class => "form-control" }  %>
@@ -32,7 +26,6 @@
         妊娠中または出産しているか選択してください。
     </small>
   </div>
-  
   <div class="form-group">
     <%= f.label :number_of_clinics, 'このクリニックは何院目ですか？' %>
     <%= f.select :number_of_clinics, { "1院目" => 1, "2院目" => 2, "3院目" => 3, "4院目" => 4, "5院目" => 5, "6院目" => 6, "7院目" => 7, "8院目" => 8, "9院目" => 9, "10院目" => 10, "それ以上" => 99 }, {}, { :class => "form-control" } %>
